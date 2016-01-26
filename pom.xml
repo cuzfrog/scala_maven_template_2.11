@@ -24,11 +24,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
-		</dependency>
 
 		<!-- Test -->
 		<dependency>
@@ -66,7 +61,6 @@
 						</goals>
 						<configuration>
 							<args>
-								<arg>-make:transitive</arg>
 								<arg>-dependencyfile</arg>
 								<arg>${project.build.directory}/.scala_dependencies</arg>
 							</args>
