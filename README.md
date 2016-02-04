@@ -1,8 +1,14 @@
 # scala_maven_template_2.11
-##Effective scala points:
+##Scala points:
 
 
 1.val initialization order:
 http://docs.scala-lang.org/tutorials/FAQ/initialization-order.html
 
 when override hashCode, make sure every val involved is not null.
+
+2.pitfall of mapValues and filterNot etc.
+https://issues.scala-lang.org/browse/SI-4776
+
+some methods do not create new map, but instead, create a MapView
+
