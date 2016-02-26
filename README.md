@@ -12,3 +12,10 @@ https://issues.scala-lang.org/browse/SI-4776
 
 some methods do not create new map, but instead, create a MapView
 
+3.disable Mylyn in eclipse to speed up scala compiling.
+
+simply enter Preferences-> Mylyn  disable any Auto*
+
+4.lazy argument
+
+f(x: =>B):C   now, x is a expensive-like fun
