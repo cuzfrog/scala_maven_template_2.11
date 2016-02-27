@@ -18,6 +18,6 @@ simply enter Preferences-> Mylyn  disable any Auto*
 
 ####4.lazy argument
 
-f(x: =>B):C   now, x is a expensive-like fun
+f(x: =>B):C   now, B is something like lazy val a=(expensive-like fun)
 
 ####5.use case object as enumeration
