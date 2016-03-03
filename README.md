@@ -20,4 +20,9 @@ simply enter Preferences-> Mylyn  disable any Auto*
 
 f(x: =>B):C   now, B is something like lazy val a=(expensive-like fun)
 
-####5.use case object as enumeration
+####5.Enum
+
+a.use case object as enumeration ,well a little more verbose.
+
+b.override Enumeration http://stackoverflow.com/questions/2507273/overriding-scala-enumeration-value  so you can inherit your own Value creation method in subclass or inner-class
+
