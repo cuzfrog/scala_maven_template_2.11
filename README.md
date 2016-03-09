@@ -48,3 +48,32 @@ val fun=expensiveFunction.cheapFunction(_:T)  //everytime access fun, both funct
 val result=expensiveFunction
 val fun=result.cheapFunction(_:T)
 ```
+####7.use .view properly
+```scala
+import com.typesafe.scalalogging.LazyLogging
+
+object TempTest extends App with LazyLogging {
+  def timer(f: () => Any): Unit = {
+    val time1 = System.currentTimeMillis()
+    f()
+    val time2 = System.currentTimeMillis()
+    logger.info(f.toString + " done, time consumed:" + (time2 - time1))
+  }
+
+  val f1 = () => {
+    r(List(1, 2, 3, 4, 5),1000)
+  }
+  val f2 = () => {
+    r(List(1, 2, 3, 4, 5).view,1000).view.force
+  }
+  
+  def r(l: Seq[Int], n: Int):Seq[Int] = {
+    if (n == 0) l
+    else r(l.map(_ + 1), n - 1)
+  }
+  
+  timer(f1)
+  timer(f2)
+}
+```
+f2 is faster than f1, but, if you change run times from 1000 to 10000, it will throw overflow exception
