@@ -89,3 +89,11 @@ else
 //GOOD:
 val a=if(condition1) x else y
 ```
+
+####9.package sealed trait
+```scala
+package foo
+sealed trait I
+private[foo] trait I2 extends I
+```
+trait I2 can be and only can be implemented within package foo
