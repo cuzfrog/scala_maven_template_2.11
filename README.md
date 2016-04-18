@@ -77,3 +77,23 @@ object TempTest extends App with LazyLogging {
 }
 ```
 f2 is faster than f1, but, if you change run times from 1000 to 10000, it will throw overflow exception
+
+####8.if procedure control
+```scala
+//BAD:
+if(condition1)
+  val a=x
+else
+  val a=y
+  
+//GOOD:
+val a=if(condition1) x else y
+```
+
+####9.package sealed trait
+```scala
+package foo
+sealed trait I
+private[foo] trait I2 extends I
+```
+trait I2 can be and only can be implemented within package foo
