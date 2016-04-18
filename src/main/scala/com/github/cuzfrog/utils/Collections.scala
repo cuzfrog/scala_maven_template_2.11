@@ -2,7 +2,7 @@ package com.github.cuzfrog.utils
 
 import scala.reflect.runtime.universe._
 
-object Collections {
+private[cuzfrog] object Collections {
   implicit class ExMap[A, B](val in: Map[A, B]) {
     /**
      * Ex-version of valueMap, which return a new map instead of an evil view.

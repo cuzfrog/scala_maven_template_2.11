@@ -3,7 +3,7 @@ package com.github.cuzfrog.utils
 import scala.reflect.runtime.universe._
 import com.typesafe.scalalogging.LazyLogging
 
-object Types {
+private[cuzfrog] object Types {
   implicit class ExType[U: TypeTag](that: U) {
     /**
      * Use TypeTag to deal with Erasure.
