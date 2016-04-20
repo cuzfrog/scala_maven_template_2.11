@@ -97,3 +97,42 @@ sealed trait I
 private[foo] trait I2 extends I
 ```
 trait I2 can be and only can be implemented within package foo
+
+####10.abuse of closure
+```scala
+val map1:Map[Key1,Map[Key2,Value]]=someMap1
+val map2:Map[Key1,Map[Key2,Function]]=someMap2
+
+val mapWithProcessedValue=map1.map{
+  e1=>
+    (e1._1,e1._2.map{
+      e2=>
+        val fun=map2(e1._1)(e2._1) //Bad, but not worst
+        (e2._1,fun(e2._2)) //apply fun to value
+    })
+}
+
+val funToFind=map2(_:Key1)(_:Key2)
+val mapWithProcessedValue=map1.map{
+  e1=>
+    val partialFun=funToFind(e1.1)_
+    (e1._1,e1._2.map{
+      e2=>
+        val fun=partialFun(e2._1) //Now, you suppose that this be faster, in reality, this is the slowest
+        (e2._1,fun(e2._2)) //apply fun to value
+    })
+}
+
+val mapWithProcessedValue=map1.map{
+  e1=>
+    val subMap2=map2(e1.1)
+    (e1._1,e1._2.map{
+      e2=>
+        val fun=subMap2(e2._1) //Good.
+        (e2._1,fun(e2._2)) //apply fun to value
+    })
+}
+```
+
+
+
