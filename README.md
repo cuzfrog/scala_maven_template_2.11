@@ -1,4 +1,7 @@
 # scala_maven_template_2.11
+
+Pull the repository and use it directly. When using eclipse, you need to install https://github.com/sonatype/m2eclipse-scala
+
 ##Scala points:
 
 
@@ -162,3 +165,13 @@ iterator.map
 //better:
 iterator.toSeq.map
 ```
+####13.Favor inheritance over composition for immutable objects
+
+Mixin of trait only lacks the ability of dynamicaly change components, which is also left out by immutability.
+```scala
+condition match{
+  case c1 => new A with B1
+  case c2 => new A with B2
+}
+```
+Use condition to choose what trait to mix in, instead of inserting composited ones.
