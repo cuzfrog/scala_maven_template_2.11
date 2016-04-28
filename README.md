@@ -165,10 +165,14 @@ iterator.map
 //better:
 iterator.toSeq.map
 ```
-####13.Favor inheritance over composition for immutable objects
-
+####13."Mixin composition"
+Favor inheritance over composition for immutable objects.
 Mixin of traits only lacks the ability of dynamically changing components, which is also dropped out by immutability.
 ```scala
+trait A {def delegateDo()}
+trait B extends A //B not necessary
+trait B1 extends B{def delegateDo()=doSomeThing1}
+trait B2 extends B{def delegateDo()=doSomeThing2}
 val immutableA=condition match{
   case c1 => new A with B1
   case c2 => new A with B2
