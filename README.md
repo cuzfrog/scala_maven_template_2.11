@@ -167,9 +167,9 @@ iterator.toSeq.map
 ```
 ####13.Favor inheritance over composition for immutable objects
 
-Mixin of trait only lacks the ability of dynamicaly change components, which is also left out by immutability.
+Mixin of traits only lacks the ability of dynamically changing components, which is also dropped out by immutability.
 ```scala
-condition match{
+val immutableA=condition match{
   case c1 => new A with B1
   case c2 => new A with B2
 }
