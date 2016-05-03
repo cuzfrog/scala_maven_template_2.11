@@ -18,4 +18,16 @@ private[cuzfrog] object FileAssistant {
     Stream.continually(bos.write(data))
     bos.close()
   }
+
+  /**
+   * Parse a complete file path.
+   * @return Tuple3(pre-path,fileName,extension)
+   */
+  def pathParse(path: String): (String, String, String) = {
+    val PathParser = """(.*[\\/])(.*)(\.[\d\w]*)""".r
+    path match {
+      case PathParser(p, fn, s) => (p, fn, s)
+      case _ => throw new IllegalArgumentException("Bad file path:"+path)
+    }
+  }
 }
