@@ -179,3 +179,6 @@ val immutableA=condition match{
 }
 ```
 Use condition to choose what trait to mix in, instead of inserting composited ones.
+
+####14.Recursive sequnce traversal
+Using a cursor of indices instead of shrinking the sequence has a slight performance advantage.
