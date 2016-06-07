@@ -2,7 +2,7 @@
 
 Pull the repository and use it directly. When using eclipse, you need to install https://github.com/sonatype/m2eclipse-scala
 
-##Scala points:
+##Effective Scala Points:
 
 
 ####1.val initialization order:
@@ -182,3 +182,11 @@ Use condition to choose what trait to mix in, instead of inserting composited on
 
 ####14.Recursive sequnce traversal
 Using a cursor of indices instead of shrinking the sequence has a slight performance advantage.
+
+####15.Type inference in generic method:
+```scala
+implicit class ExMap[A, B](val in: Map[A, B]) {
+  def innerJoin[B2, C](that: Map[A, B2],f: (B, B2) => C): Map[A, C] // type B2 needs to be explicit
+  def innerJoinInfer[B2, C](that: Map[A, B2])(f: (B, B2) => C): Map[A, C] //type B2 in f can be infered from that Map[A,B2]
+}
+```
